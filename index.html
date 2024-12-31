@@ -4,7 +4,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Developer Portfolio</title>
+    
+    <!-- SEO Meta Tags -->
+    <title>Yassin Boulhaoua | Web Developer Portfolio</title>
+    <meta name="description" content="Professional web developer portfolio of Yassin Boulhaoua, specializing in full-stack development with expertise in JavaScript, Python, and PHP.">
+    <meta name="keywords" content="web developer, full stack developer, JavaScript, Python, PHP, HTML5, CSS3">
+    <meta name="author" content="Yassin Boulhaoua">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://your-website-url.com/">
+    <meta property="og:title" content="Yassin Boulhaoua | Web Developer Portfolio">
+    <meta property="og:description" content="Professional web developer portfolio showcasing full-stack development projects and expertise.">
+    <meta property="og:image" content="https://your-website-url.com/path-to-your-image.jpg">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://your-website-url.com/">
+    <meta name="twitter:title" content="Yassin Boulhaoua | Web Developer Portfolio">
+    <meta name="twitter:description" content="Professional web developer portfolio showcasing full-stack development projects and expertise.">
+    <meta name="twitter:image" content="https://your-website-url.com/path-to-your-image.jpg">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
     <link rel="stylesheet" href="styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
@@ -102,12 +127,7 @@
                         </div>
                         <div class="skill-name">PHP</div>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <img src="/Image/react.png" alt="React">
-                        </div>
-                        <div class="skill-name">React</div>
-                    </div>
+                    
                     
                     <!-- Duplicate set for continuous scroll -->
                     <div class="skill-card">
@@ -140,12 +160,7 @@
                         </div>
                         <div class="skill-name">PHP</div>
                     </div>
-                    <div class="skill-card">
-                        <div class="skill-icon">
-                            <img src="/Image/react.png" alt="React">
-                        </div>
-                        <div class="skill-name">React</div>
-                    </div>
+                    
                 </div>
             </div>
         </section>
@@ -197,6 +212,20 @@
     <button class="theme-switch" onclick="toggleTheme()">🌓 Toggle Theme</button>
 
     <script src="script.js"></script>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Yassin Boulhaoua",
+      "jobTitle": "Web Developer",
+      "url": "https://your-website-url.com",
+      "sameAs": [
+        "https://linkedin.com/in/your-profile",
+        "https://github.com/your-profile"
+      ],
+      "knowsAbout": ["Web Development", "JavaScript", "Python", "PHP", "HTML5", "CSS3"]
+    }
+    </script>
 </body>
 
 </html>
