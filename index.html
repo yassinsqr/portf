@@ -7,7 +7,7 @@
     
     <!-- Enhanced SEO Meta Tags -->
     <title>Yassin Boulhaoua | Full Stack Developer | JavaScript, Python & PHP Expert</title>
-    <meta name="description" content="Hire Yassin Boulhaoua - Expert Full Stack Developer with 3+ years experience in JavaScript, Python, PHP, React & Node.js. View portfolio & contact for web development services.">
+    <meta name="description" content="Hire Yassin Boulhaoua - Expert Full Stack Developer with 1+ years experience in JavaScript, Python, PHP, React & Node.js. View portfolio & contact for web development services.">
     <meta name="keywords" content="Yassin Boulhaoua, web developer, full stack developer, JavaScript expert, Python developer, PHP developer, frontend developer, backend developer, Morocco developer, React developer, Node.js developer">
     <meta name="author" content="Yassin Boulhaoua">
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
@@ -40,6 +40,18 @@
     <meta name="twitter:title" content="Yassin Boulhaoua | Web Developer Portfolio">
     <meta name="twitter:description" content="Professional web developer portfolio showcasing full-stack development projects and expertise.">
     <meta name="twitter:image" content="https://yassinsqr.site/path-to-your-image.jpg">
+    <!-- Add Intersection Observer Polyfill for broader browser support -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/intersection-observer/1.0.1/intersection-observer.min.js"></script>
+    
+    <!-- Add AOS library for smoother animations -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Add GSAP for advanced animations -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js" defer></script>
+    <script src="script.js" defer></script>
 
     <!-- Additional Schema Markup -->
     <script type="application/ld+json">
@@ -124,13 +136,10 @@
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
     <link rel="stylesheet" href="styles.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.0/ScrollToPlugin.min.js"></script>
 </head>
 
 <body>
-    <!-- Replace your existing navigation with this -->
+    
 
     <div class="nav-wrapper">
         <nav class="navbar">
@@ -156,7 +165,7 @@
         </div>
     </section>
 
-    <main class="container">
+    <main class="container" role="main" aria-label="Main content">
         <section id="experience">
             <h2 class="section-title">Experience</h2>
             <div class="timeline">
@@ -192,31 +201,31 @@
                     <!-- First set -->
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/html-5.png" alt="HTML">
+                            <img src="Image/html-5.png" alt="HTML">
                         </div>
                         <div class="skill-name">HTML5</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/css-3.png" alt="CSS">
+                            <img src="Image/css-3.png" alt="CSS">
                         </div>
                         <div class="skill-name">CSS3</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/js.png" alt="JavaScript">
+                            <img src="Image/js.png" alt="JavaScript">
                         </div>
                         <div class="skill-name">JavaScript</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/python.png" alt="Python">
+                            <img src="Image/python.png" alt="Python">
                         </div>
                         <div class="skill-name">Python</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/php.png" alt="PHP">
+                            <img src="Image/php.png" alt="PHP">
                         </div>
                         <div class="skill-name">PHP</div>
                     </div>
@@ -225,31 +234,31 @@
                     <!-- Duplicate set for continuous scroll -->
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/html-5.png" alt="HTML">
+                            <img src="Image/html-5.png" alt="HTML">
                         </div>
                         <div class="skill-name">HTML5</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/css-3.png" alt="CSS">
+                            <img src="Image/css-3.png" alt="CSS">
                         </div>
                         <div class="skill-name">CSS3</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/js.png" alt="JavaScript">
+                            <img src="Image/js.png" alt="JavaScript">
                         </div>
                         <div class="skill-name">JavaScript</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/python.png" alt="Python">
+                            <img src="Image/python.png" alt="Python">
                         </div>
                         <div class="skill-name">Python</div>
                     </div>
                     <div class="skill-card">
                         <div class="skill-icon">
-                            <img src="/Image/php.png" alt="PHP">
+                            <img src="Image/php.png" alt="PHP">
                         </div>
                         <div class="skill-name">PHP</div>
                     </div>
@@ -259,15 +268,19 @@
         </section>
 
         <section id="portfolio">
-            <h2 class="section-title">Project</h2>
+            <h2 class="section-title">Projects</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="E-commerce Platform">
+                <article class="portfolio-item">
+                    <img src="images/ecommerce.jpg" alt="Screenshot of E-commerce Platform">
                     <div class="portfolio-overlay">
                         <h3>E-commerce Platform</h3>
                         <p>React, Node.js, MongoDB</p>
+                        <div class="portfolio-links">
+                            <a href="#" class="btn" aria-label="View E-commerce project">View Project</a>
+                            <a href="#" class="btn" aria-label="View source code">Source Code</a>
+                        </div>
                     </div>
-                </div>
+                </article>
                 <div class="portfolio-item">
                     <img src="/api/placeholder/400/300" alt="Social Media Dashboard">
                     <div class="portfolio-overlay">
@@ -276,10 +289,9 @@
                     </div>
                 </div>
                 <div class="portfolio-item">
-                    <img src="/api/placeholder/400/300" alt="Mobile App">
+                    <img src="Image/python main.png" alt="Python Tkinder">
                     <div class="portfolio-overlay">
-                        <h3>Mobile App</h3>
-                        <p>React Native, Redux, AWS</p>
+                        <h3>python tkinder</h3>
                     </div>
                 </div>
             </div>
@@ -287,9 +299,10 @@
 
         <section id="contact">
             <h2 class="section-title">Contact Me</h2>
-            <form class="contact-form" id="contact-form">
+            <form class="contact-form" id="contact-form" novalidate>
                 <div class="form-group">
-                    <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+                    <label for="name" class="visually-hidden">Your Name</label>
+                    <input type="text" id="name" name="name" class="form-input" placeholder="Your Name" required>
                 </div>
                 <div class="form-group">
                     <input type="email" name="email" class="form-input" placeholder="Your Email" required>
@@ -302,9 +315,18 @@
         </section>
     </main>
 
-    <button class="theme-switch" onclick="toggleTheme()">🌓 Toggle Theme</button>
+    <footer class="footer">
+        <div class="social-links">
+            <a href="https://github.com/yourusername" aria-label="GitHub Profile">
+                <i class="fab fa-github"></i>
+            </a>
+            <a href="https://linkedin.com/in/yourusername" aria-label="LinkedIn Profile">
+                <i class="fab fa-linkedin"></i>
+            </a>
+        </div>
+    </footer>
 
-    <script src="script.js"></script>
+    <button class="theme-switch" onclick="toggleTheme()">🌓 Toggle Theme</button>
     
 </body>
 

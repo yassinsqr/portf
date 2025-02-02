@@ -19,6 +19,9 @@ navLinks.forEach(link => {
     });
 });
 
+
+
+
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
     if (!e.target.closest('.navbar') && navbarCollapse.classList.contains('show')) {
