@@ -262,7 +262,105 @@ const initCarousel = () => {
         updateSlides();
     }, 3000);
 };
+
+// Remove or comment out the old initSkillsScroll function
+
+function createInfiniteScroll() {
+    const wrapper = document.getElementById('skillsWrapper');
+    const cards = wrapper.children;
+    const cardCount = cards.length;
+    const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(cards[0]).marginRight);
+    let scrollPosition = 0;
+    let speed = 1; // Pixels per frame
+    let isHovered = false;
+    let animationFrameId = null;
+
+    // Clone cards for infinite effect
+    for (let i = 0; i < cardCount; i++) {
+        const clone = cards[i].cloneNode(true);
+        wrapper.appendChild(clone);
+    }
+
+    function animate() {
+        if (!isHovered) {
+            scrollPosition -= speed;
+            
+            // Reset position when scrolled one full set
+            if (Math.abs(scrollPosition) >= cardCount * cardWidth) {
+                scrollPosition = 0;
+            }
+            
+            wrapper.style.transform = `translateX(${scrollPosition}px)`;
+        }
+        animationFrameId = requestAnimationFrame(animate);
+    }
+
+    // Event listeners for hover effect
+    wrapper.addEventListener('mouseenter', () => {
+        isHovered = true;
+    });
+
+    wrapper.addEventListener('mouseleave', () => {
+        isHovered = false;
+    });
+
+    // Touch events for mobile
+    let touchStartX = 0;
+    let lastTouchX = 0;
+    let isDragging = false;
+
+    wrapper.addEventListener('touchstart', (e) => {
+        touchStartX = e.touches[0].clientX;
+        lastTouchX = touchStartX;
+        isDragging = true;
+        isHovered = true; // Pause animation
+    });
+
+    wrapper.addEventListener('touchmove', (e) => {
+        if (!isDragging) return;
+        
+        const touchX = e.touches[0].clientX;
+        const diff = touchX - lastTouchX;
+        scrollPosition += diff;
+        
+        wrapper.style.transform = `translateX(${scrollPosition}px)`;
+        lastTouchX = touchX;
+    });
+
+    wrapper.addEventListener('touchend', () => {
+        isDragging = false;
+        isHovered = false; // Resume animation
+    });
+
+    // Start animation
+    animate();
+
+    // Cleanup function
+    return () => {
+        if (animationFrameId) {
+            cancelAnimationFrame(animationFrameId);
+        }
+    };
+}
+
+// Initialize the scroll on page load
+window.addEventListener('load', () => {
+    createInfiniteScroll();
+    // ...existing code...
+});
+
+// Handle window resize
+let resizeTimeout;
+window.addEventListener('resize', () => {
+    clearTimeout(resizeTimeout);
+    resizeTimeout = setTimeout(() => {
+        // Reinitialize scroll on resize
+        createInfiniteScroll();
+    }, 250);
+});
+
 window.addEventListener('load', () => {
     initCarousel();
+    createInfiniteScroll();
     // ... your existing load event handlers
 });
