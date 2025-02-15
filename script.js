@@ -1,5 +1,6 @@
 // Initialize GSAP
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
+// Add this to your cv-script.js
 
 // Hamburger menu functionality
 const navbarToggler = document.querySelector('.navbar-toggler');
@@ -18,9 +19,6 @@ navLinks.forEach(link => {
         navbarCollapse.classList.remove('show');
     });
 });
-
-
-
 
 // Close menu when clicking outside
 document.addEventListener('click', (e) => {
@@ -197,170 +195,4 @@ window.addEventListener('load', () => {
 // Refresh ScrollTrigger on window resize
 window.addEventListener('resize', () => {
     ScrollTrigger.refresh();
-});
-// Initialize carousel functionality
-const initCarousel = () => {
-    const track = document.querySelector('.carousel-track');
-    const slides = Array.from(track.children);
-    const nextButton = document.querySelector('.carousel-button.next');
-    const prevButton = document.querySelector('.carousel-button.prev');
-    const dotsContainer = document.querySelector('.carousel-dots');
-    let currentIndex = 0;
-    
-    // Create dots
-    slides.forEach((_, index) => {
-        const dot = document.createElement('div');
-        dot.classList.add('dot');
-        if (index === 0) dot.classList.add('active');
-        dotsContainer.appendChild(dot);
-    });
-    
-    const dots = Array.from(dotsContainer.children);
-    
-    // Set initial state
-    updateSlides();
-    
-    // Update slides position and appearance
-    function updateSlides() {
-        slides.forEach((slide, index) => {
-            slide.classList.remove('active');
-            dots[index].classList.remove('active');
-            
-            if (index === currentIndex) {
-                slide.classList.add('active');
-                dots[index].classList.add('active');
-            }
-        });
-        
-        const offset = -currentIndex * (100 / slides.length);
-        track.style.transform = `translateX(${offset}%)`;
-    }
-    
-    // Next slide
-    nextButton.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlides();
-    });
-    
-    // Previous slide
-    prevButton.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
-        updateSlides();
-    });
-    
-    // Dot navigation
-    dots.forEach((dot, index) => {
-        dot.addEventListener('click', () => {
-            currentIndex = index;
-            updateSlides();
-        });
-    });
-    
-    // Auto advance
-    setInterval(() => {
-        currentIndex = (currentIndex + 1) % slides.length;
-        updateSlides();
-    }, 3000);
-};
-
-// Remove or comment out the old initSkillsScroll function
-
-function createInfiniteScroll() {
-    const wrapper = document.getElementById('skillsWrapper');
-    const cards = wrapper.children;
-    const cardCount = cards.length;
-    const cardWidth = cards[0].offsetWidth + parseFloat(getComputedStyle(cards[0]).marginRight);
-    let scrollPosition = 0;
-    let speed = 1; // Pixels per frame
-    let isHovered = false;
-    let animationFrameId = null;
-
-    // Clone cards for infinite effect
-    for (let i = 0; i < cardCount; i++) {
-        const clone = cards[i].cloneNode(true);
-        wrapper.appendChild(clone);
-    }
-
-    function animate() {
-        if (!isHovered) {
-            scrollPosition -= speed;
-            
-            // Reset position when scrolled one full set
-            if (Math.abs(scrollPosition) >= cardCount * cardWidth) {
-                scrollPosition = 0;
-            }
-            
-            wrapper.style.transform = `translateX(${scrollPosition}px)`;
-        }
-        animationFrameId = requestAnimationFrame(animate);
-    }
-
-    // Event listeners for hover effect
-    wrapper.addEventListener('mouseenter', () => {
-        isHovered = true;
-    });
-
-    wrapper.addEventListener('mouseleave', () => {
-        isHovered = false;
-    });
-
-    // Touch events for mobile
-    let touchStartX = 0;
-    let lastTouchX = 0;
-    let isDragging = false;
-
-    wrapper.addEventListener('touchstart', (e) => {
-        touchStartX = e.touches[0].clientX;
-        lastTouchX = touchStartX;
-        isDragging = true;
-        isHovered = true; // Pause animation
-    });
-
-    wrapper.addEventListener('touchmove', (e) => {
-        if (!isDragging) return;
-        
-        const touchX = e.touches[0].clientX;
-        const diff = touchX - lastTouchX;
-        scrollPosition += diff;
-        
-        wrapper.style.transform = `translateX(${scrollPosition}px)`;
-        lastTouchX = touchX;
-    });
-
-    wrapper.addEventListener('touchend', () => {
-        isDragging = false;
-        isHovered = false; // Resume animation
-    });
-
-    // Start animation
-    animate();
-
-    // Cleanup function
-    return () => {
-        if (animationFrameId) {
-            cancelAnimationFrame(animationFrameId);
-        }
-    };
-}
-
-// Initialize the scroll on page load
-window.addEventListener('load', () => {
-    createInfiniteScroll();
-    // ...existing code...
-});
-
-// Handle window resize
-let resizeTimeout;
-window.addEventListener('resize', () => {
-    clearTimeout(resizeTimeout);
-    resizeTimeout = setTimeout(() => {
-        // Reinitialize scroll on resize
-        createInfiniteScroll();
-    }, 250);
-});
-
-window.addEventListener('load', () => {
-    initCarousel();
-    createInfiniteScroll();
-    // ... your existing load event handlers
 });
